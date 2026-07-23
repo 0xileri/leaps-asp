@@ -1,0 +1,22 @@
+{
+  "name": "leaps-asp",
+  "version": "1.0.0",
+  "description": "Thesis-to-structure LEAPS options analysis service. A2MCP pay-per-call ASP for OKX.AI.",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test:mock": "node test/run-mock.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "@okxweb3/x402-core": "^0.1.0",
+    "@okxweb3/x402-evm": "^0.2.1",
+    "@okxweb3/x402-express": "^0.1.1",
+    "express": "^4.19.0",
+    "zod": "^4.4.3"
+  }
+}

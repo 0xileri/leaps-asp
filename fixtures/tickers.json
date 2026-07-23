@@ -1,0 +1,422 @@
+{
+ "BTC-25SEP26-90000-C": {
+  "instrument_name": "BTC-25SEP26-90000-C",
+  "mark_price": 0.1257,
+  "mark_iv": 54.5,
+  "greeks": {
+   "delta": 0.66,
+   "gamma": 0.0,
+   "vega": 10278.6,
+   "theta": -104.15,
+   "rho": 0.0
+  }
+ },
+ "BTC-25SEP26-96000-C": {
+  "instrument_name": "BTC-25SEP26-96000-C",
+  "mark_price": 0.0936,
+  "mark_iv": 55.0,
+  "greeks": {
+   "delta": 0.553,
+   "gamma": 0.0,
+   "vega": 8607.4,
+   "theta": -77.52,
+   "rho": 0.0
+  }
+ },
+ "BTC-25SEP26-100000-C": {
+  "instrument_name": "BTC-25SEP26-100000-C",
+  "mark_price": 0.0759,
+  "mark_iv": 55.3,
+  "greeks": {
+   "delta": 0.482,
+   "gamma": 0.0,
+   "vega": 7509.2,
+   "theta": -62.87,
+   "rho": 0.0
+  }
+ },
+ "BTC-25SEP26-110000-C": {
+  "instrument_name": "BTC-25SEP26-110000-C",
+  "mark_price": 0.0432,
+  "mark_iv": 56.1,
+  "greeks": {
+   "delta": 0.324,
+   "gamma": 0.0,
+   "vega": 5035.7,
+   "theta": -35.78,
+   "rho": 0.0
+  }
+ },
+ "BTC-25SEP26-120000-C": {
+  "instrument_name": "BTC-25SEP26-120000-C",
+  "mark_price": 0.0234,
+  "mark_iv": 57.0,
+  "greeks": {
+   "delta": 0.202,
+   "gamma": 0.0,
+   "vega": 3139.0,
+   "theta": -19.38,
+   "rho": 0.0
+  }
+ },
+ "BTC-25SEP26-130000-C": {
+  "instrument_name": "BTC-25SEP26-130000-C",
+  "mark_price": 0.0122,
+  "mark_iv": 57.8,
+  "greeks": {
+   "delta": 0.118,
+   "gamma": 0.0,
+   "vega": 1842.3,
+   "theta": -10.08,
+   "rho": 0.0
+  }
+ },
+ "BTC-25SEP26-140000-C": {
+  "instrument_name": "BTC-25SEP26-140000-C",
+  "mark_price": 0.0061,
+  "mark_iv": 58.6,
+  "greeks": {
+   "delta": 0.066,
+   "gamma": 0.0,
+   "vega": 1029.8,
+   "theta": -5.07,
+   "rho": 0.0
+  }
+ },
+ "BTC-25SEP26-160000-C": {
+  "instrument_name": "BTC-25SEP26-160000-C",
+  "mark_price": 0.0014,
+  "mark_iv": 60.3,
+  "greeks": {
+   "delta": 0.019,
+   "gamma": 0.0,
+   "vega": 288.6,
+   "theta": -1.19,
+   "rho": 0.0
+  }
+ },
+ "BTC-25DEC26-90000-C": {
+  "instrument_name": "BTC-25DEC26-90000-C",
+  "mark_price": 0.1732,
+  "mark_iv": 54.5,
+  "greeks": {
+   "delta": 0.645,
+   "gamma": 0.0,
+   "vega": 15615.2,
+   "theta": -59.24,
+   "rho": 0.0
+  }
+ },
+ "BTC-25DEC26-96000-C": {
+  "instrument_name": "BTC-25DEC26-96000-C",
+  "mark_price": 0.144,
+  "mark_iv": 55.0,
+  "greeks": {
+   "delta": 0.576,
+   "gamma": 0.0,
+   "vega": 13944.4,
+   "theta": -49.26,
+   "rho": 0.0
+  }
+ },
+ "BTC-25DEC26-100000-C": {
+  "instrument_name": "BTC-25DEC26-100000-C",
+  "mark_price": 0.127,
+  "mark_iv": 55.3,
+  "greeks": {
+   "delta": 0.531,
+   "gamma": 0.0,
+   "vega": 12854.2,
+   "theta": -43.43,
+   "rho": 0.0
+  }
+ },
+ "BTC-25DEC26-110000-C": {
+  "instrument_name": "BTC-25DEC26-110000-C",
+  "mark_price": 0.0918,
+  "mark_iv": 56.1,
+  "greeks": {
+   "delta": 0.425,
+   "gamma": 0.0,
+   "vega": 10295.9,
+   "theta": -31.4,
+   "rho": 0.0
+  }
+ },
+ "BTC-25DEC26-120000-C": {
+  "instrument_name": "BTC-25DEC26-120000-C",
+  "mark_price": 0.0657,
+  "mark_iv": 57.0,
+  "greeks": {
+   "delta": 0.333,
+   "gamma": 0.0,
+   "vega": 8065.1,
+   "theta": -22.47,
+   "rho": 0.0
+  }
+ },
+ "BTC-25DEC26-130000-C": {
+  "instrument_name": "BTC-25DEC26-130000-C",
+  "mark_price": 0.0466,
+  "mark_iv": 57.8,
+  "greeks": {
+   "delta": 0.256,
+   "gamma": 0.0,
+   "vega": 6206.0,
+   "theta": -15.95,
+   "rho": 0.0
+  }
+ },
+ "BTC-25DEC26-140000-C": {
+  "instrument_name": "BTC-25DEC26-140000-C",
+  "mark_price": 0.0329,
+  "mark_iv": 58.6,
+  "greeks": {
+   "delta": 0.194,
+   "gamma": 0.0,
+   "vega": 4708.5,
+   "theta": -11.26,
+   "rho": 0.0
+  }
+ },
+ "BTC-25DEC26-160000-C": {
+  "instrument_name": "BTC-25DEC26-160000-C",
+  "mark_price": 0.0162,
+  "mark_iv": 60.3,
+  "greeks": {
+   "delta": 0.109,
+   "gamma": 0.0,
+   "vega": 2628.7,
+   "theta": -5.56,
+   "rho": 0.0
+  }
+ },
+ "BTC-25DEC26-180000-C": {
+  "instrument_name": "BTC-25DEC26-180000-C",
+  "mark_price": 0.008,
+  "mark_iv": 61.9,
+  "greeks": {
+   "delta": 0.059,
+   "gamma": 0.0,
+   "vega": 1429.6,
+   "theta": -2.73,
+   "rho": 0.0
+  }
+ },
+ "BTC-26MAR27-90000-C": {
+  "instrument_name": "BTC-26MAR27-90000-C",
+  "mark_price": 0.2078,
+  "mark_iv": 54.5,
+  "greeks": {
+   "delta": 0.647,
+   "gamma": 0.0,
+   "vega": 19751.8,
+   "theta": -44.8,
+   "rho": 0.0
+  }
+ },
+ "BTC-26MAR27-96000-C": {
+  "instrument_name": "BTC-26MAR27-96000-C",
+  "mark_price": 0.1803,
+  "mark_iv": 55.0,
+  "greeks": {
+   "delta": 0.593,
+   "gamma": 0.0,
+   "vega": 18092.8,
+   "theta": -38.87,
+   "rho": 0.0
+  }
+ },
+ "BTC-26MAR27-100000-C": {
+  "instrument_name": "BTC-26MAR27-100000-C",
+  "mark_price": 0.1639,
+  "mark_iv": 55.3,
+  "greeks": {
+   "delta": 0.557,
+   "gamma": 0.0,
+   "vega": 17012.1,
+   "theta": -35.32,
+   "rho": 0.0
+  }
+ },
+ "BTC-26MAR27-110000-C": {
+  "instrument_name": "BTC-26MAR27-110000-C",
+  "mark_price": 0.1286,
+  "mark_iv": 56.1,
+  "greeks": {
+   "delta": 0.473,
+   "gamma": 0.0,
+   "vega": 14449.0,
+   "theta": -27.72,
+   "rho": 0.0
+  }
+ },
+ "BTC-26MAR27-120000-C": {
+  "instrument_name": "BTC-26MAR27-120000-C",
+  "mark_price": 0.1007,
+  "mark_iv": 57.0,
+  "greeks": {
+   "delta": 0.398,
+   "gamma": 0.0,
+   "vega": 12137.4,
+   "theta": -21.7,
+   "rho": 0.0
+  }
+ },
+ "BTC-26MAR27-130000-C": {
+  "instrument_name": "BTC-26MAR27-130000-C",
+  "mark_price": 0.0787,
+  "mark_iv": 57.8,
+  "greeks": {
+   "delta": 0.331,
+   "gamma": 0.0,
+   "vega": 10108.2,
+   "theta": -16.96,
+   "rho": 0.0
+  }
+ },
+ "BTC-26MAR27-140000-C": {
+  "instrument_name": "BTC-26MAR27-140000-C",
+  "mark_price": 0.0615,
+  "mark_iv": 58.6,
+  "greeks": {
+   "delta": 0.274,
+   "gamma": 0.0,
+   "vega": 8362.9,
+   "theta": -13.25,
+   "rho": 0.0
+  }
+ },
+ "BTC-26MAR27-160000-C": {
+  "instrument_name": "BTC-26MAR27-160000-C",
+  "mark_price": 0.0376,
+  "mark_iv": 60.3,
+  "greeks": {
+   "delta": 0.185,
+   "gamma": 0.0,
+   "vega": 5646.5,
+   "theta": -8.1,
+   "rho": 0.0
+  }
+ },
+ "BTC-26MAR27-180000-C": {
+  "instrument_name": "BTC-26MAR27-180000-C",
+  "mark_price": 0.0231,
+  "mark_iv": 61.9,
+  "greeks": {
+   "delta": 0.124,
+   "gamma": 0.0,
+   "vega": 3771.6,
+   "theta": -4.97,
+   "rho": 0.0
+  }
+ },
+ "BTC-25JUN27-90000-C": {
+  "instrument_name": "BTC-25JUN27-90000-C",
+  "mark_price": 0.2363,
+  "mark_iv": 54.5,
+  "greeks": {
+   "delta": 0.653,
+   "gamma": 0.0,
+   "vega": 23334.1,
+   "theta": -37.18,
+   "rho": 0.0
+  }
+ },
+ "BTC-25JUN27-96000-C": {
+  "instrument_name": "BTC-25JUN27-96000-C",
+  "mark_price": 0.2101,
+  "mark_iv": 55.0,
+  "greeks": {
+   "delta": 0.607,
+   "gamma": 0.0,
+   "vega": 21688.9,
+   "theta": -33.05,
+   "rho": 0.0
+  }
+ },
+ "BTC-25JUN27-100000-C": {
+  "instrument_name": "BTC-25JUN27-100000-C",
+  "mark_price": 0.1941,
+  "mark_iv": 55.3,
+  "greeks": {
+   "delta": 0.577,
+   "gamma": 0.0,
+   "vega": 20618.0,
+   "theta": -30.54,
+   "rho": 0.0
+  }
+ },
+ "BTC-25JUN27-110000-C": {
+  "instrument_name": "BTC-25JUN27-110000-C",
+  "mark_price": 0.1593,
+  "mark_iv": 56.1,
+  "greeks": {
+   "delta": 0.506,
+   "gamma": 0.0,
+   "vega": 18065.7,
+   "theta": -25.07,
+   "rho": 0.0
+  }
+ },
+ "BTC-25JUN27-120000-C": {
+  "instrument_name": "BTC-25JUN27-120000-C",
+  "mark_price": 0.1308,
+  "mark_iv": 57.0,
+  "greeks": {
+   "delta": 0.44,
+   "gamma": 0.0,
+   "vega": 15727.7,
+   "theta": -20.57,
+   "rho": 0.0
+  }
+ },
+ "BTC-25JUN27-130000-C": {
+  "instrument_name": "BTC-25JUN27-130000-C",
+  "mark_price": 0.1074,
+  "mark_iv": 57.8,
+  "greeks": {
+   "delta": 0.381,
+   "gamma": 0.0,
+   "vega": 13625.8,
+   "theta": -16.9,
+   "rho": 0.0
+  }
+ },
+ "BTC-25JUN27-140000-C": {
+  "instrument_name": "BTC-25JUN27-140000-C",
+  "mark_price": 0.0883,
+  "mark_iv": 58.6,
+  "greeks": {
+   "delta": 0.329,
+   "gamma": 0.0,
+   "vega": 11762.3,
+   "theta": -13.89,
+   "rho": 0.0
+  }
+ },
+ "BTC-25JUN27-160000-C": {
+  "instrument_name": "BTC-25JUN27-160000-C",
+  "mark_price": 0.06,
+  "mark_iv": 60.3,
+  "greeks": {
+   "delta": 0.244,
+   "gamma": 0.0,
+   "vega": 8704.1,
+   "theta": -9.44,
+   "rho": 0.0
+  }
+ },
+ "BTC-25JUN27-180000-C": {
+  "instrument_name": "BTC-25JUN27-180000-C",
+  "mark_price": 0.0411,
+  "mark_iv": 61.9,
+  "greeks": {
+   "delta": 0.179,
+   "gamma": 0.0,
+   "vega": 6410.6,
+   "theta": -6.47,
+   "rho": 0.0
+  }
+ }
+}
