@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LEAPSY — AI-Powered LEAPS Strategy Engine</title>
+<meta name="description" content="Turn a directional crypto thesis into a fully structured long-dated options position. Pay-per-call A2MCP service on OKX.AI.">
+<style>
+  :root{
+    --bg:#070a08; --panel:#0d120e; --panel2:#111813; --line:#1c2a1f;
+    --text:#e8f0ea; --dim:#93a89a; --green:#7ed957; --green-dk:#4ea832;
+    --gold:#f0c674; --mono:ui-monospace,'Cascadia Code',Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:var(--green);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 24px}
+
+  /* subtle grid backdrop */
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .hero::before{content:"";position:absolute;inset:0;
+    background-image:linear-gradient(rgba(126,217,87,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(126,217,87,.05) 1px,transparent 1px);
+    background-size:44px 44px;mask-image:radial-gradient(ellipse 80% 70% at 50% 30%,#000 40%,transparent 75%)}
+  .hero-inner{position:relative;display:flex;align-items:center;gap:48px;padding:96px 0 72px;flex-wrap:wrap}
+  .hero-copy{flex:1 1 420px}
+  .badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--panel);border-radius:99px;padding:5px 14px;font-size:.78rem;color:var(--dim);letter-spacing:.08em;text-transform:uppercase}
+  .badge .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green)}
+  h1{font-size:clamp(2.4rem,6vw,3.6rem);line-height:1.08;letter-spacing:-.02em;margin:20px 0 8px;font-weight:800}
+  h1 .g{color:var(--green)}
+  .tagline{font-size:1.15rem;color:var(--dim);max-width:34em}
+  .cta-row{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:12px 22px;border-radius:10px;font-weight:600;font-size:.95rem;transition:transform .12s ease}
+  .btn:hover{text-decoration:none;transform:translateY(-1px)}
+  .btn-primary{background:linear-gradient(135deg,var(--green),var(--green-dk));color:#08120a}
+  .btn-ghost{border:1px solid var(--line);color:var(--text);background:var(--panel)}
+  .hero-logo{flex:0 0 auto;width:min(280px,60vw);margin-inline:auto}
+  .hero-logo img{width:100%;border-radius:50%;box-shadow:0 0 60px rgba(126,217,87,.22),0 0 140px rgba(126,217,87,.08)}
+
+  section{padding:72px 0}
+  .kicker{color:var(--green);font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+  h2{font-size:1.9rem;letter-spacing:-.01em;margin:10px 0 14px}
+  .lead{color:var(--dim);max-width:44em}
+
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:36px}
+  .step{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px}
+  .step .num{font-family:var(--mono);color:var(--green);font-size:.85rem}
+  .step h3{margin:8px 0 6px;font-size:1.06rem}
+  .step p{color:var(--dim);font-size:.92rem}
+
+  .split{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px;align-items:start;margin-top:36px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:28px}
+  .card h3{font-size:1.15rem;margin-bottom:4px}
+  .price{font-size:2rem;font-weight:800;margin:10px 0 2px}
+  .price small{font-size:.95rem;color:var(--dim);font-weight:400}
+  .free-tag{color:var(--green)} .paid-tag{color:var(--gold)}
+  .card ul{list-style:none;margin-top:14px}
+  .card li{padding:5px 0 5px 26px;position:relative;color:var(--dim);font-size:.93rem}
+  .card li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:700}
+  .card.paid li::before{color:var(--gold)}
+
+  pre{background:#0a0f0b;border:1px solid var(--line);border-radius:14px;padding:22px;overflow-x:auto;font-family:var(--mono);font-size:.8rem;line-height:1.55}
+  .k{color:#8fb8e0}.s{color:#a8e6a1}.n{color:var(--gold)}
+  .code-title{font-family:var(--mono);font-size:.75rem;color:var(--dim);margin-bottom:8px;text-transform:uppercase;letter-spacing:.1em}
+
+  .endpoints{margin-top:36px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .ep{display:flex;gap:18px;padding:16px 22px;border-bottom:1px solid var(--line);background:var(--panel);flex-wrap:wrap;align-items:baseline}
+  .ep:last-child{border-bottom:0}
+  .ep code{font-family:var(--mono);font-size:.85rem;color:var(--text);background:var(--panel2);border:1px solid var(--line);padding:3px 10px;border-radius:6px;white-space:nowrap}
+  .ep .desc{color:var(--dim);font-size:.9rem;flex:1}
+  .pill{font-size:.7rem;font-weight:700;letter-spacing:.08em;padding:2px 10px;border-radius:99px;text-transform:uppercase}
+  .pill.free{background:rgba(126,217,87,.12);color:var(--green)}
+  .pill.paid{background:rgba(240,198,116,.12);color:var(--gold)}
+
+  .guard{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:36px}
+  .g-item{border-left:2px solid var(--green);padding:4px 0 4px 18px}
+  .g-item h3{font-size:1rem;margin-bottom:4px}
+  .g-item p{color:var(--dim);font-size:.9rem}
+
+  footer{border-top:1px solid var(--line);padding:40px 0 56px;color:var(--dim);font-size:.85rem}
+  footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .disclaimer{margin-top:14px;font-size:.8rem;color:#6d8074}
+  @media (max-width:640px){ .hero-inner{padding:64px 0 48px;gap:28px} section{padding:52px 0} }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <span class="badge"><span class="dot"></span>Live · A2MCP service on OKX.AI</span>
+      <h1>Turn your crypto conviction into a <span class="g">LEAPS</span> advantage.</h1>
+      <p class="tagline">LEAPSY transforms a plain-language directional thesis into a fully structured
+      long-dated options position — built exclusively from real, currently listed Deribit contracts.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#pricing">See pricing</a>
+        <a class="btn btn-ghost" href="#api">API &amp; MCP tools</a>
+      </div>
+    </div>
+    <div class="hero-logo"><img src="/logo.jpg" alt="LEAPSY logo" width="280" height="280"></div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <span class="kicker">How it works</span>
+    <h2>Thesis in. Structure out.</h2>
+    <p class="lead">You bring the conviction — asset, thesis, horizon, and capital. LEAPSY handles the complexity.</p>
+    <div class="steps">
+      <div class="step"><div class="num">01</div><h3>Send your thesis</h3><p>"BTC makes a new ATH within 18 months." Pick BTC or ETH, your horizon in months, conviction level, and capital in USD.</p></div>
+      <div class="step"><div class="num">02</div><h3>Live market scan</h3><p>Real-time spot, the full listed option chain, and per-contract greeks and implied volatility — candidates filtered deterministically in code.</p></div>
+      <div class="step"><div class="num">03</div><h3>AI structuring</h3><p>The engine selects the optimal strike and expiry for your conviction and sizes the position against your capital.</p></div>
+      <div class="step"><div class="num">04</div><h3>Strict JSON back</h3><p>Instrument, USD premium, contract count, breakeven, greeks, IV, bull/base/bear scenarios, roll trigger, and explicit risk flags.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" style="padding-top:0">
+  <div class="wrap">
+    <span class="kicker">Pricing</span>
+    <h2>Try free. Pay per call.</h2>
+    <div class="split">
+      <div class="card">
+        <h3 class="free-tag">Preview</h3>
+        <div class="price">Free</div>
+        <ul>
+          <li>Recommended contract, strike &amp; expiry</li>
+          <li>Current mark implied volatility</li>
+          <li>Verify the service before paying</li>
+          <li>Deterministic engine, real listed contracts</li>
+        </ul>
+      </div>
+      <div class="card paid">
+        <h3 class="paid-tag">Full structure</h3>
+        <div class="price">0.1 <small>USDT / call · settled via x402</small></div>
+        <ul>
+          <li>Everything in Preview</li>
+          <li>USD premium, sizing &amp; breakeven</li>
+          <li>Delta · theta · vega per contract</li>
+          <li>Bull / base / bear scenario returns</li>
+          <li>Entry notes, roll trigger &amp; risk flags</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="api" style="padding-top:0">
+  <div class="wrap">
+    <span class="kicker">Integration</span>
+    <h2>Built for agents first.</h2>
+    <p class="lead">One MCP endpoint any agent can discover and call — payment gated per tool call with the x402
+    protocol, so discovery and previews stay open. REST mirrors for everything else.</p>
+    <div class="endpoints">
+      <div class="ep"><code>POST /mcp</code><span class="pill free">free</span><span class="desc"><b>preview_leaps_structure</b> — recommended contract before you pay</span></div>
+      <div class="ep"><code>POST /mcp</code><span class="pill paid">paid</span><span class="desc"><b>structure_leaps_position</b> — the full structure, 402 → pay → 200</span></div>
+      <div class="ep"><code>POST /preview</code><span class="pill free">free</span><span class="desc">REST preview for curl &amp; non-MCP callers</span></div>
+      <div class="ep"><code>POST /structure</code><span class="pill paid">paid</span><span class="desc">REST full structure (x402)</span></div>
+      <div class="ep"><code>GET /health</code><span class="pill free">free</span><span class="desc">liveness</span></div>
+    </div>
+
+    <div class="split">
+      <div>
+        <div class="code-title">Request</div>
+<pre>{
+  <span class="k">"asset"</span>: <span class="s">"BTC"</span>,
+  <span class="k">"thesis"</span>: <span class="s">"new ATH within 18 months
+           driven by ETF inflows"</span>,
+  <span class="k">"horizon_months"</span>: <span class="n">18</span>,
+  <span class="k">"conviction"</span>: <span class="s">"high"</span>,
+  <span class="k">"capital_usd"</span>: <span class="n">5000</span>
+}</pre>
+      </div>
+      <div>
+        <div class="code-title">Response (excerpt)</div>
+<pre>{
+  <span class="k">"recommended"</span>: {
+    <span class="k">"instrument"</span>: <span class="s">"BTC-25JUN27-76000-C"</span>,
+    <span class="k">"strike_usd"</span>: <span class="n">76000</span>,
+    <span class="k">"est_premium_usd"</span>: <span class="n">7479.74</span>,
+    <span class="k">"contract_count"</span>: <span class="n">0.6</span>,
+    <span class="k">"breakeven_usd"</span>: <span class="n">83480</span>,
+    <span class="k">"greeks"</span>: { <span class="k">"delta"</span>: <span class="n">0.464</span>, … }
+  },
+  <span class="k">"scenarios"</span>: [ … ],
+  <span class="k">"risk_flags"</span>: [ … ]
+}</pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <span class="kicker">Why trust the output</span>
+    <h2>Guardrails, not vibes.</h2>
+    <div class="guard">
+      <div class="g-item"><h3>Real contracts only</h3><p>Candidates are pre-filtered in code from the live listed chain — the AI can choose among them but can never invent an instrument.</p></div>
+      <div class="g-item"><h3>Schema-validated</h3><p>Every response is validated before it leaves the process, with a deterministic fallback engine — the service never returns unchecked model output.</p></div>
+      <div class="g-item"><h3>Honest limits</h3><p>Horizons beyond the longest listed expiry are capped and flagged, never faked. Coin-settlement conversion is always disclosed.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <div><b style="color:var(--text)">LEAPSY</b> · AI-powered LEAPS strategy engine</div>
+      <div>ASP #8598 on OKX.AI · settled on X Layer</div>
+    </div>
+    <p class="disclaimer">Analysis only, not financial advice. Long-dated options carry substantial risk, including total loss of premium.
+    LEAPSY provides structural analysis of listed derivatives; it does not execute trades or custody funds.</p>
+  </div>
+</footer>
+
+</body>
+</html>
