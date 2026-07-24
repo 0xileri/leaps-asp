@@ -79,6 +79,23 @@
   .g-item h3{font-size:1rem;margin-bottom:4px}
   .g-item p{color:var(--dim);font-size:.9rem}
 
+  /* try-it panel */
+  .f-label{display:block;font-size:.78rem;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;margin:16px 0 6px}
+  .seg{display:flex;gap:8px}
+  .seg-btn{flex:1;padding:10px;border-radius:8px;border:1px solid var(--line);background:var(--panel2);color:var(--dim);font-weight:700;cursor:pointer;font-size:.95rem}
+  .seg-btn.active{border-color:var(--green);color:var(--green);background:rgba(126,217,87,.08)}
+  #try-form textarea,#try-form input,#try-form select{width:100%;background:var(--panel2);border:1px solid var(--line);border-radius:8px;color:var(--text);padding:10px 12px;font:inherit;font-size:.92rem}
+  #try-form textarea:focus,#try-form input:focus,#try-form select:focus{outline:none;border-color:var(--green-dk)}
+  .f-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .try-placeholder{color:#5f7264;font-size:.92rem;margin-top:10px}
+  .r-instrument{font-family:var(--mono);font-size:1.05rem;color:var(--green);margin:12px 0 4px;word-break:break-all}
+  .r-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px 16px;margin-top:12px}
+  .r-grid dt{color:var(--dim);font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;margin-top:10px}
+  .r-grid dd{font-size:1.05rem;font-weight:600}
+  .r-note{color:var(--dim);font-size:.82rem;margin-top:16px;border-top:1px solid var(--line);padding-top:12px}
+  .r-err{color:#e08b8b;font-size:.9rem;margin-top:12px}
+  .spin{display:inline-block;width:14px;height:14px;border:2px solid rgba(8,18,10,.35);border-top-color:#08120a;border-radius:50%;animation:sp .7s linear infinite;vertical-align:-2px;margin-right:8px}
+  @keyframes sp{to{transform:rotate(360deg)}}
   footer{border-top:1px solid var(--line);padding:40px 0 56px;color:var(--dim);font-size:.85rem}
   footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   .disclaimer{margin-top:14px;font-size:.8rem;color:#6d8074}
@@ -95,7 +112,7 @@
       <p class="tagline">LEAPSY transforms a plain-language directional thesis into a fully structured
       long-dated options position — built exclusively from real, currently listed Deribit contracts.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="#pricing">See pricing</a>
+        <a class="btn btn-primary" href="#try">Try it live — free</a>
         <a class="btn btn-ghost" href="#api">API &amp; MCP tools</a>
       </div>
     </div>
@@ -113,6 +130,36 @@
       <div class="step"><div class="num">02</div><h3>Live market scan</h3><p>Real-time spot, the full listed option chain, and per-contract greeks and implied volatility — candidates filtered deterministically in code.</p></div>
       <div class="step"><div class="num">03</div><h3>AI structuring</h3><p>The engine selects the optimal strike and expiry for your conviction and sizes the position against your capital.</p></div>
       <div class="step"><div class="num">04</div><h3>Strict JSON back</h3><p>Instrument, USD premium, contract count, breakeven, greeks, IV, bull/base/bear scenarios, roll trigger, and explicit risk flags.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="try" style="padding-top:0">
+  <div class="wrap">
+    <span class="kicker">Try it live</span>
+    <h2>Free preview, real market data.</h2>
+    <p class="lead">This calls the same free endpoint any agent can hit — live Deribit chain, deterministic engine, no signup.</p>
+    <div class="split" style="margin-top:28px">
+      <form class="card" id="try-form">
+        <label class="f-label">Asset</label>
+        <div class="seg" role="radiogroup">
+          <button type="button" class="seg-btn active" data-asset="BTC">BTC</button>
+          <button type="button" class="seg-btn" data-asset="ETH">ETH</button>
+        </div>
+        <label class="f-label" for="f-thesis">Your thesis</label>
+        <textarea id="f-thesis" rows="2" maxlength="300" placeholder="e.g. new ATH within 18 months driven by ETF inflows">new ATH within 18 months driven by ETF inflows</textarea>
+        <div class="f-grid">
+          <div><label class="f-label" for="f-horizon">Horizon (months)</label><input id="f-horizon" type="number" min="2" max="36" value="18"></div>
+          <div><label class="f-label" for="f-capital">Capital (USD)</label><input id="f-capital" type="number" min="1" value="5000"></div>
+        </div>
+        <label class="f-label" for="f-conviction">Conviction</label>
+        <select id="f-conviction"><option>low</option><option selected>medium</option><option>high</option></select>
+        <button type="submit" class="btn btn-primary" id="f-go" style="width:100%;margin-top:18px">Get free preview</button>
+      </form>
+      <div class="card" id="try-out" aria-live="polite">
+        <h3 style="color:var(--dim);font-weight:600">Result</h3>
+        <div id="try-result" class="try-placeholder">Your recommended contract will appear here.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -215,5 +262,60 @@
   </div>
 </footer>
 
+<script>
+(function(){
+  var asset = "BTC";
+  var segBtns = document.querySelectorAll(".seg-btn");
+  segBtns.forEach(function(b){
+    b.addEventListener("click", function(){
+      segBtns.forEach(function(x){ x.classList.remove("active"); });
+      b.classList.add("active");
+      asset = b.dataset.asset;
+    });
+  });
+
+  var form = document.getElementById("try-form");
+  var out = document.getElementById("try-result");
+  var go = document.getElementById("f-go");
+
+  form.addEventListener("submit", async function(ev){
+    ev.preventDefault();
+    go.disabled = true;
+    go.innerHTML = '<span class="spin"></span>Scanning live chain…';
+    out.innerHTML = '<div class="try-placeholder">Pulling spot, chain and IV from Deribit…</div>';
+    try {
+      var res = await fetch("/preview", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          asset: asset,
+          thesis: document.getElementById("f-thesis").value,
+          horizon_months: Number(document.getElementById("f-horizon").value),
+          conviction: document.getElementById("f-conviction").value,
+          capital_usd: Number(document.getElementById("f-capital").value)
+        })
+      });
+      var d = await res.json();
+      if (!res.ok) throw new Error((d.errors || [d.error || "request failed"]).join("; "));
+      var r = d.recommended;
+      out.innerHTML =
+        '<div class="r-instrument">' + r.instrument + '</div>' +
+        '<dl class="r-grid">' +
+        '<div><dt>Spot</dt><dd>$' + Number(d.spot_usd).toLocaleString() + '</dd></div>' +
+        '<div><dt>Strike</dt><dd>$' + Number(r.strike_usd).toLocaleString() + '</dd></div>' +
+        '<div><dt>Expiry</dt><dd>' + r.expiry + '</dd></div>' +
+        '<div><dt>Mark IV</dt><dd>' + r.mark_iv_pct + '%</dd></div>' +
+        '</dl>' +
+        '<p class="r-note">' + d.note + '</p>' +
+        '<p class="r-note" style="border:0;padding-top:4px">' + d.disclaimer + '.</p>';
+    } catch (e) {
+      out.innerHTML = '<div class="r-err">' + String(e.message || e).replace(/</g,"&lt;") + '</div>';
+    } finally {
+      go.disabled = false;
+      go.textContent = "Get free preview";
+    }
+  });
+})();
+</script>
 </body>
 </html>
