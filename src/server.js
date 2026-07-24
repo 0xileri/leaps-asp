@@ -5,6 +5,9 @@ import { paymentGate, initPayments } from "./payment.js";
 import { handleMcpRequest, isPaidMcpCall } from "./mcp.js";
 
 const app = express();
+// behind Railway's proxy: trust X-Forwarded-* so req.protocol is https and the
+// x402 challenge's resource URL advertises the real scheme.
+app.set("trust proxy", 1);
 app.use(express.json({ limit: "16kb" }));
 
 // ---------- REST surface (kept for curl/debugging and non-MCP callers) ----------
