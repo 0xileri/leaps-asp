@@ -65,6 +65,14 @@
   .k{color:#8fb8e0}.s{color:#a8e6a1}.n{color:var(--gold)}
   .code-title{font-family:var(--mono);font-size:.75rem;color:var(--dim);margin-bottom:8px;text-transform:uppercase;letter-spacing:.1em}
 
+  .agent-cta{margin-top:24px}
+  .agent-cta h3{font-size:1.05rem;margin-bottom:8px}
+  .agent-cta p{color:var(--dim);font-size:.92rem;max-width:60em}
+  .agent-cmd-box{position:relative;margin-top:16px}
+  .agent-cmd-box pre{margin:0;padding-right:100px;white-space:pre-wrap;word-break:break-word}
+  .copy-btn{position:absolute;top:14px;right:14px;padding:6px 14px;font-size:.8rem}
+  .copy-btn.copied{color:var(--green);border-color:var(--green)}
+
   .endpoints{margin-top:36px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
   .ep{display:flex;gap:18px;padding:16px 22px;border-bottom:1px solid var(--line);background:var(--panel);flex-wrap:wrap;align-items:baseline}
   .ep:last-child{border-bottom:0}
@@ -161,6 +169,21 @@
         <h3 style="color:var(--dim);font-weight:600">Result</h3>
         <div id="try-result" class="try-placeholder">Your recommended contract will appear here.</div>
       </div>
+    </div>
+
+    <div class="card agent-cta">
+      <h3>Want the full structure — sizing, premium, breakeven, greeks, scenarios?</h3>
+      <p>That's the paid tier, and it's built for agents, not browsers. Any AI agent that speaks MCP and the <b>OKX Agent Payments Protocol</b> — Claude Code, OpenClaw, and others — can pay per call and get it directly. Paste this into yours:</p>
+      <div class="agent-cmd-box">
+        <pre id="agent-cmd">I'd like to use the service provided by Agent 8598:
+
+Service title: LEAPS Position Structuring
+Service type: A2MCP
+Endpoint: https://leaps-asp-production.up.railway.app/mcp
+Please use OKX Agent Payments Protocol to send a request to this endpoint</pre>
+        <button type="button" class="btn btn-ghost copy-btn" id="copy-cmd">Copy</button>
+      </div>
+      <p class="r-note" style="border:0;padding-top:2px">Your agent will get a 402, quote the price (0.1 USDT on X Layer), and — once you confirm — pay and receive the full structured position in one round trip.</p>
     </div>
   </div>
 </section>
@@ -316,6 +339,30 @@
       go.textContent = "Get free preview";
     }
   });
+
+  var copyBtn = document.getElementById("copy-cmd");
+  var cmdEl = document.getElementById("agent-cmd");
+  if (copyBtn && cmdEl) {
+    copyBtn.addEventListener("click", function(){
+      var text = cmdEl.textContent;
+      var done = function(){
+        copyBtn.textContent = "Copied";
+        copyBtn.classList.add("copied");
+        setTimeout(function(){ copyBtn.textContent = "Copy"; copyBtn.classList.remove("copied"); }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(function(){
+          var ta = document.createElement("textarea");
+          ta.value = text; document.body.appendChild(ta); ta.select();
+          document.execCommand("copy"); document.body.removeChild(ta); done();
+        });
+      } else {
+        var ta = document.createElement("textarea");
+        ta.value = text; document.body.appendChild(ta); ta.select();
+        document.execCommand("copy"); document.body.removeChild(ta); done();
+      }
+    });
+  }
 })();
 </script>
 </body>
