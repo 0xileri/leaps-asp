@@ -14,7 +14,7 @@ payment is gated per tool call, not per route: `initialize`, `tools/list`, and t
 
 ### REST (kept for curl, debugging, non-MCP callers)
 - `POST /preview` — free. same pipeline, truncated output (instrument + strike + expiry + IV, no sizing/scenarios). lets a buyer agent verify the service before paying. preview runs the deterministic structurer only and never spends model tokens, so the free endpoint can't be used to drain your Anthropic credits.
-- `POST /structure` — paid ($0.30/call default). same engine as the paid tool.
+- `POST /structure` — paid (0.1 USDT0/call default). same engine as the paid tool.
 - `GET /health` — liveness.
 
 ### request

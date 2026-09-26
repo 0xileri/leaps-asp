@@ -18,7 +18,7 @@
 //                          eip155:196 = X Layer mainnet; eip155:1952 = testnet),
 //                          OKX_BASE_URL, PRICE_USD.
 
-const PRICE_USD = process.env.PRICE_USD || "0.30";
+const PRICE_USD = process.env.PRICE_USD || "0.1";
 const PAY_TO = process.env.PAY_TO_ADDRESS || "0xYOUR_AGENTIC_WALLET";
 
 let liveMwPromise = null;
